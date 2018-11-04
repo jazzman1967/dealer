@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+    background: #dcdcdc;
+    margin: auto;
+}
+
+header {
+    background: linear-gradient(-90deg,#947db2,#120c19,#947db2);
+    width: 100%;
+    height: 7%;
+    top: 0;
+    position: fixed;
+}
+
+.content {
+    margin-top: 2.5%;
+    padding: 2%;
+}
+
+/*Position nav menu in center of page*/
+nav {
+    margin-left: 25%;
+}
+
+/*Menu operation*/
+nav ul {
+    list-style: none;
+    position: relative; /*so first submenu can be positioned within the main menu */
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul ul {
+    display: none; /*don't display until mouse hover*/
+    position: absolute;
+    top: 100%; /*position submenu at top of main menu*/
+}
+
+nav ul ul li {
+    float: none; /*causes subment to display vertically instead of horizontally*/
+}
+
+nav ul li:hover > ul {
+    display: block; /* causes the child ul element to display, when the mouse hovers over the ul li element */
+}
+
+nav ul::after {
+    content: ""; /*add empty content to first ul*/
+    display: block; /*display content as a block element*/
+    clear: both; /*stop floating of li elements*/
+}
+
+/*Formatting of menu*/
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-align: center;
+    display: block;
+    padding-left: 1.5em;
+    text-decoration: none;
+    background-color: #947db2;
+    color: white;
+    font-weight: bold;
+}
+
+nav ul li a.lastitem {
+    padding-right: 1.5em;
+}
+
+nav ul ul li a {
+    text-align: left;
+    display: block;
+    font-weight: normal;
+}
+
+nav ul ul li a:hover {
+    color: #b2a37d;
+}
+
+.content #error {
+    color: #ff0000;
+    text-decoration: italic;
+    font-weight: bold; 
+}
+
+/*formatting of form fields*/
+fieldset {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: 0.5em;
+}
+
+legend {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+label {
+    float: left;
+    text-align: right;
+    vertical-align: center;
+    padding-right: 1em;
+}
+
+input, select, date {
+    margin-bottom: 1.5em; 
+}
+
+input:required, input[required] {
+    border: 2px solid red;
+}
+
+input:valid {
+    border: 2px solid #120C19;
+}
