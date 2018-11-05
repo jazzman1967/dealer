@@ -9,7 +9,7 @@ $chart = array();
 $elements = array();
 $pdo = connect();
 $q = 'SELECT c.account,c.description,c.type_id,a.type FROM coa c INNER JOIN account_types a ON c.type_id = a.id';
-echo $q;
+//echo $q;
 $r = $pdo->query($q);
 $r->setFetchMode(PDO::FETCH_CLASS,'objChart');
 while($row = $r->fetch()) {
@@ -56,10 +56,11 @@ td,th {
 
         <table>
             <thead>
-            <tr><th>Line</th><th>Account</th><th>Control</th><th>Ctrl Type</th><th>Dr/Cr</th><th>Amount</th></tr>
+            <tr><th>Line</th><th>Account</th><th>Description</th><th>Control</th><th>Ctrl Type</th><th>Dr/Cr</th><th>Amount</th></tr>
             </thead>
             <tr><td>1</td>
                 <td><input type="text" name="account1" id="account1" value=""></td>
+                <td><input type="text" name="desc1" id="desc1" value="" readonly></td>
                 <td><input type="text" name="control1" id="control1" value=""></td>
                 <td>
                     <select name="type1" id="type1">
@@ -76,10 +77,11 @@ td,th {
                         <option value="C">Credit</option>
                     </select>
                 </td>
-                <td><input type="number" name="amount1" id="amount1" min="0.00" max="1000000.00" step="0.01" value=""></td>
+                <td><input type="number" name="amount1" id="amount1" min="0.00" max="1000000.00" step="0.01" value="" disabled></td>
             </tr>
             <tr><td>2</td>
                 <td><input type="text" name="account2" id="account2" value=""></td>
+                <td><input type="text" name="desc2" id="desc2" value="" readonly></td>
                 <td><input type="text" name="control2" id="control2" value=""></td>
                 <td>
                     <select name="type2" id="type2">
@@ -96,10 +98,11 @@ td,th {
                         <option value="C">Credit</option>
                     </select>
                 </td>
-                <td><input type="number" name="amount2" id="amount2" min="0.00" max="1000000.00" step="0.01" value=""></td>
+                <td><input type="number" name="amount2" id="amount2" min="0.00" max="1000000.00" step="0.01" value="" disabled></td>
             </tr>
             <tr><td>3</td>
                 <td><input type="text" name="account3" id="account3" value=""></td>
+                <td><input type="text" name="desc3" id="desc3" value="" readonly></td>
                 <td><input type="text" name="control3" id="control3" value=""></td>
                 <td>
                     <select name="type3" id="type3">
@@ -116,10 +119,11 @@ td,th {
                         <option value="C">Credit</option>
                     </select>
                 </td>
-                <td><input type="number" name="amount3" id="amount3" min="0.00" max="1000000.00" step="0.01" value=""></td>
+                <td><input type="number" name="amount3" id="amount3" min="0.00" max="1000000.00" step="0.01" value="" disabled></td>
             </tr>
             <tr><td>4</td>
                 <td><input type="text" name="account4" id="account4" value=""></td>
+                <td><input type="text" name="desc4" id="desc4" value="" readonly></td>
                 <td><input type="text" name="control4" id="control4" value=""></td>
                 <td>
                     <select name="type4" id="type4">
@@ -136,10 +140,11 @@ td,th {
                         <option value="C">Credit</option>
                     </select>
                 </td>
-                <td><input type="number" name="amount4" id="amount4" min="0.00" max="1000000.00" step="0.01" value=""></td>
+                <td><input type="number" name="amount4" id="amount4" min="0.00" max="1000000.00" step="0.01" value="" disabled></td>
             </tr>
             <tr><td>5</td>
                 <td><input type="text" name="account5" id="account5" value=""></td>
+                <td><input type="text" name="desc5" id="desc5" value="" readonly></td>
                 <td><input type="text" name="control5" id="control5" value=""></td>
                 <td>
                     <select name="type5" id="type5">
@@ -156,10 +161,11 @@ td,th {
                         <option value="C">Credit</option>
                     </select>
                 </td>
-                <td><input type="number" name="amount5" id="amount5" min="0.00" max="1000000.00" step="0.01" value=""></td>
+                <td><input type="number" name="amount5" id="amount5" min="0.00" max="1000000.00" step="0.01" value="" disabled></td>
             </tr>
             <tr><td>6</td>
                 <td><input type="text" name="account6" id="account6" value=""></td>
+                <td><input type="text" name="desc6" id="desc6" value="" readonly></td>
                 <td><input type="text" name="control6" id="control6" value=""></td>
                 <td>
                     <select name="type6" id="type6">
@@ -176,10 +182,11 @@ td,th {
                         <option value="C">Credit</option>
                     </select>
                 </td>
-                <td><input type="number" name="amount6" id="amount6" min="0.00" max="1000000.00" step="0.01" value=""></td>
+                <td><input type="number" name="amount6" id="amount6" min="0.00" max="1000000.00" step="0.01" value="" disabled></td>
             </tr>
             <tr><td>7</td>
                 <td><input type="text" name="account7" id="account7" value=""></td>
+                <td><input type="text" name="desc7" id="desc7" value="" readonly></td>
                 <td><input type="text" name="control7" id="control7" value=""></td>
                 <td>
                     <select name="type7" id="type7">
@@ -196,10 +203,11 @@ td,th {
                         <option value="C">Credit</option>
                     </select>
                 </td>
-                <td><input type="number" name="amount7" id="amount7" min="0.00" max="1000000.00" step="0.01" value=""></td>
+                <td><input type="number" name="amount7" id="amount7" min="0.00" max="1000000.00" step="0.01" value="" disabled></td>
             </tr>
             <tr><td>8</td>
                 <td><input type="text" name="account8" id="account8" value=""></td>
+                <td><input type="text" name="desc8" id="desc8" value="" readonly></td>
                 <td><input type="text" name="control8" id="control8" value=""></td>
                 <td>
                     <select name="type8" id="type8">
@@ -216,10 +224,11 @@ td,th {
                         <option value="C">Credit</option>
                     </select>
                 </td>
-                <td><input type="number" name="amount8" id="amount8" min="0.00" max="1000000.00" step="0.01" value=""></td>
+                <td><input type="number" name="amount8" id="amount8" min="0.00" max="1000000.00" step="0.01" value="" disabled></td>
             </tr>
             <tr><td>9</td>
                 <td><input type="text" name="account9" id="account9" value=""></td>
+                <td><input type="text" name="desc9" id="desc9" value="" readonly></td>
                 <td><input type="text" name="control9" id="control9" value=""></td>
                 <td>
                     <select name="type9" id="type9">
@@ -236,10 +245,11 @@ td,th {
                         <option value="C">Credit</option>
                     </select>
                 </td>
-                <td><input type="number" name="amount9" id="amount9" min="0.00" max="1000000.00" step="0.01" value=""></td>
+                <td><input type="number" name="amount9" id="amount9" min="0.00" max="1000000.00" step="0.01" value="" disabled></td>
             </tr>
             <tr><td>10</td>
                 <td><input type="text" name="account10" id="account10" value=""></td>
+                <td><input type="text" name="desc10" id="desc10" value="" readonly></td>
                 <td><input type="text" name="control10" id="control10" value=""></td>
                 <td>
                     <select name="type10" id="type10">
@@ -256,11 +266,11 @@ td,th {
                         <option value="C">Credit</option>
                     </select>
                 </td>
-                <td><input type="number" name="amount10" id="amount10" min="0.00" max="1000000.00" step="0.01" value=""></td>
+                <td><input type="number" name="amount10" id="amount10" min="0.00" max="1000000.00" step="0.01" value="" disabled></td>
             </tr>
         </table>
 
-        <p><input type="submit" name="submit" value="Save" disabled></p>
+        <p><input type="submit" name="save" id="save" value="Save" disabled><input type="reset" name="reset" id="reset" value="Reset"></p>
 
     </fieldset>
 </form>
