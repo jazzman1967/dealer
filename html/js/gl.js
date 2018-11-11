@@ -9,6 +9,25 @@ const badAccount = 'Invalid Account!';
 let debits = 0.00;
 let credits = 0.00;
 
+/*Need to keep track of whether or not a posting amount has updated the 
+  Total debits or credits. If not, what happens is the user can just
+  enter and exit the amount field and continually update the debits and credits amounts
+  However, if the account changes, is invalid or is blank, and there is a value
+  in the amount field, we need to reverse the entry and set the boolean back
+  to false
+*/
+
+let bool1 = false;
+let bool2 = false;
+let bool3 = false;
+let bool4 = false;
+let bool5 = false;
+let bool6 = false;
+let bool7 = false;
+let bool8 = false;
+let bool9 = false;
+let bool10 = false;
+
 //Grab references to the Debits & Credits fields
 let fldDebits = document.getElementById('debits');
 let fldCredits = document.getElementById('credits');
@@ -94,17 +113,18 @@ account1.addEventListener('blur', () => {
     trType = document.getElementById('dc1').value;
     if(glAccount.length !== 0) {
         try {
+            if(postAmount.length > 0) {
+                reverseEntry(1,trType);
+                bool1 = false;
+            }
             glDescription = coa[glAccount]['description'];
             desc1.value = glDescription;
             glAmount.disabled = false; 
-            //If there was a value found in amount, then the account was changed
-            //We need to update the debits or credits
-            if(postAmount.length > 0) {
-                reverseEntry(1,trType);
-            }
+            glAmount.removeAttribute("readonly","readonly");
         } catch(err) {
             if(postAmount.length > 0) {
                 reverseEntry(1,trType);
+                bool1 = false;
             }
             
             desc1.value = badAccount;
@@ -119,6 +139,7 @@ account1.addEventListener('blur', () => {
             desc1.value = '';
             glAmount.value = '';
             glAmount.disabled = true;
+            bool1 = false; 
     }
 });
 
@@ -132,6 +153,7 @@ account2.addEventListener('blur', () => {
             glDescription = coa[glAccount]['description'];
             desc2.value = glDescription;
             glAmount.disabled = false;
+            glAmount.removeAttribute("readonly","readonly");
             if(postAmount.length > 0) {
                 reverseEntry(2,trType);
             }
@@ -165,6 +187,7 @@ account3.addEventListener('blur', () => {
             glDescription = coa[glAccount]['description'];
             desc3.value = glDescription;
             glAmount.disabled = false;
+            glAmount.removeAttribute("readonly","readonly");
             if(postAmount.length > 0) {
                 reverseEntry(3,trType);
             }
@@ -197,6 +220,7 @@ account4.addEventListener('blur', () => {
             glDescription = coa[glAccount]['description'];
             desc4.value = glDescription;
             glAmount.disabled = false;
+            glAmount.removeAttribute("readonly","readonly");
             if(postAmount.length > 0) {
                 reverseEntry(4,trType);
             }
@@ -228,6 +252,7 @@ account5.addEventListener('blur', () => {
             glDescription = coa[glAccount]['description'];
             desc5.value = glDescription;
             glAmount.disabled = false;
+            glAmount.removeAttribute("readonly","readonly");
             if(postAmount.length > 0) {
                 reverseEntry(5,trType);
             }
@@ -259,6 +284,7 @@ account6.addEventListener('blur', () => {
             glDescription = coa[glAccount]['description'];
             desc6.value = glDescription;
             glAmount.disabled = false;
+            glAmount.removeAttribute("readonly","readonly");
             if(postAmount.length > 0) {
                 reverseEntry(6, trType);
             }
@@ -290,6 +316,7 @@ account7.addEventListener('blur', () => {
             glDescription = coa[glAccount]['description'];
             desc7.value = glDescription;
             glAmount.disabled = false;
+            glAmount.removeAttribute("readonly","readonly");
             if(postAmount.length > 0) {
                 reverseEntry(7, trType);
             }
@@ -321,6 +348,7 @@ account8.addEventListener('blur', () => {
             glDescription = coa[glAccount]['description'];
             desc8.value = glDescription;
             glAmount.disabled = false;
+            glAmount.removeAttribute("readonly","readonly");
             if(postAmount.length > 0) {
                 reverseEntry(8, trType);
             }
@@ -352,6 +380,7 @@ account9.addEventListener('blur', () => {
             glDescription = coa[glAccount]['description'];
             desc9.value = glDescription;
             glAmount.disabled = false;
+            glAmount.removeAttribute("readonly","readonly");
             if(postAmount.length > 0) {
                 reverseEntry(9, trType);
             }
@@ -383,6 +412,7 @@ account10.addEventListener('blur', () => {
             glDescription = coa[glAccount]['description'];
             desc10.value = glDescription;
             glAmount.disabled = false;
+            glAmount.removeAttribute("readonly","readonly");
             if(postAmount.length > 0) {
                 reverseEntry(10, trType);
             }
@@ -405,6 +435,136 @@ account10.addEventListener('blur', () => {
     
 });
 
+/*
+Add Event Listener to the control type drop downs. 
+This will enable or disable the control field. 
+If no selection is made, we want to prevent the user from entering a control
+when that control will have no classication
+*/
+
+const type1 = document.getElementById('type1');
+const type2 = document.getElementById('type2');
+const type3 = document.getElementById('type3');
+const type4 = document.getElementById('type4');
+const type5 = document.getElementById('type5');
+const type6 = document.getElementById('type6');
+const type7 = document.getElementById('type7');
+const type8 = document.getElementById('type8');
+const type9 = document.getElementById('type9');
+const type10 = document.getElementById('type10');
+
+//Control fields to activate/deactivate depending on selection
+const control1 = document.getElementById('control1');
+const control2 = document.getElementById('control2');
+const control3 = document.getElementById('control3');
+const control4 = document.getElementById('control4');
+const control5 = document.getElementById('control5');
+const control6 = document.getElementById('control6');
+const control7 = document.getElementById('control7');
+const control8 = document.getElementById('control8');
+const control9 = document.getElementById('control9');
+const control10 = document.getElementById('control10');
+
+type1.addEventListener('change', () => {
+   const controlType = type1.value;
+   if(controlType !== 'none') {
+       control1.disabled = false;
+   } else if(controlType === 'none') {
+       control1.value = '';
+       control1.disabled = true;
+   }
+});
+
+type2.addEventListener('change', () => {
+    const controlType = type2.value;
+    if(controlType !== 'none') {
+        control2.disabled = false;
+    } else if(controlType === 'none') {
+        control2.value = '';
+        control2.disabled = true;
+    }
+});
+
+type3.addEventListener('change', () => {
+    const controlType = type3.value;
+    if(controlType !== 'none') {
+        control3.disabled = false;
+    } else if(controlType === 'none') {
+        control3.value = '';
+        control3.disabled = true;
+    }
+});
+
+type4.addEventListener('change', () => {
+    const controlType = type4.value;
+    if(controlType !== 'none') {
+        control4.disabled = false;
+    } else if(controlType === 'none') {
+        control4.value = '';
+        control4.disabled = true;
+    }
+});
+
+type5.addEventListener('change', () => {
+    const controlType = type5.value;
+    if(controlType !== 'none') {
+        control5.disabled = false;
+    } else if(controlType === 'none') {
+        control5.value = '';
+        control5.disabled = true;
+    }
+});
+
+type6.addEventListener('change', () => {
+    const controlType = type6.value;
+    if(controlType !== 'none') {
+        control6.disabled = false;
+    } else if(controlType === 'none') {
+        control6.value = '';
+        control6.disabled = true;
+    }
+});
+
+type7.addEventListener('change', () => {
+    const controlType = type7.value;
+    if(controlType !== 'none') {
+        control7.disabled = false;
+    } else if(controlType === 'none') {
+        control7.value = '';
+        control7.disabled = true;
+    }
+});
+
+type8.addEventListener('change', () => {
+    const controlType = type8.value;
+    if(controlType !== 'none') {
+        control8.disabled = false;
+    } else if(controlType === 'none') {
+        control8.value = '';
+        control8.disabled = true;
+    }
+});
+
+type9.addEventListener('change', () => {
+    const controlType = type9.value;
+    if(controlType !== 'none') {
+        control9.disabled = false;
+    } else if(controlType === 'none') {
+        control9.value = '';
+        control9.disabled = true;
+    }
+});
+
+type10.addEventListener('change', () => {
+    const controlType = type10.value;
+    if(controlType !== 'none') {
+        control10.disabled = false;
+    } else if(controlType === 'none') {
+        control10.value = '';
+        control10.disabled = true;
+    }
+});
+
 /*Create references to and add EventListeners for the amount fields that will
 update the debit and credit amount as they type in transactions
 */
@@ -420,13 +580,16 @@ const amount8 = document.getElementById('amount8');
 const amount9 = document.getElementById('amount9');
 const amount10 = document.getElementById('amount10');
 
+
 amount1.addEventListener('blur', () => {
     curDebits = Number(fldDebits.value);
     curCredits = Number(fldCredits.value);
     trType = document.getElementById('dc1').value;
     glAccount = account1.value;
     glAmount = Number(amount1.value);
-    if(trType !== null && glAccount !== null && glAmount > 0) {
+    if(trType !== null && glAccount !== null && glAmount > 0 && bool1 === false) {
+        bool1 = true;
+        amount1.setAttribute("readonly","readonly");
         if(trType === 'D') {
             totDebits = Number(curDebits + glAmount);
             fldDebits.value = totDebits;
@@ -434,11 +597,13 @@ amount1.addEventListener('blur', () => {
         } else if(trType === 'C') {
             totCredits = Number(curCredits + glAmount);
             fldCredits.value = totCredits;
-            fldDebits = curDebits;
+            fldDebits.value = curDebits;
         }
+    } else if(bool1 === true) {
+        return;
     } else {
         alert('An error occured');
-        fldDebits.value = curDebits;
+        fldDebits.value = curDebits - glAmount;
         fldCredits.value = curCredits;
         amount1.value = '';
         account1.value = '';
@@ -470,6 +635,7 @@ amount2.addEventListener('blur', () => {
         account2.value = '';
         desc2.value = '';
     }
+    amount2.setAttribute("readonly","readonly");
 });
 
 amount3.addEventListener('blur', () => {
@@ -496,6 +662,7 @@ amount3.addEventListener('blur', () => {
         account3.value = '';
         desc3.value = '';
     }
+    amount3.setAttribute("readonly","readonly");
 });
 
 amount4.addEventListener('blur', () => {
@@ -516,12 +683,13 @@ amount4.addEventListener('blur', () => {
         }
     } else {
         alert('An Error Occured');
-        fldDdebits.value = curDebits;
+        fldDebits.value = curDebits;
         fldCredits.value = curCredits;
         amount4.value = '';
         account4.value = '';
         desc4.value = '';
     }
+    amount4.setAttribute("readonly","readonly");
 }); 
 
 amount5.addEventListener('blur', () => {
@@ -548,6 +716,7 @@ amount5.addEventListener('blur', () => {
         account5.value = '';
         desc5.value = '';
     }
+    amount5.setAttribute("readonly","readonly");
 });
 
 amount6.addEventListener('blur', () => {
@@ -574,7 +743,7 @@ amount6.addEventListener('blur', () => {
         account6.value = '';
         desc6.value = '';
     }
-
+    amount6.setAttribute("readonly","readonly");
 });
 
 amount7.addEventListener('blur', () => {
@@ -601,6 +770,7 @@ amount7.addEventListener('blur', () => {
         account7.value = '';
         desc7.value = '';
     }
+    amount7.setAttribute("readonly","readonly");
 });
 
 amount8.addEventListener('blur', () => {
@@ -627,6 +797,7 @@ amount8.addEventListener('blur', () => {
         account8.value = '';
         desc8.value = '';
     }
+    amount8.setAttribute("readonly","readonly");
 });
 
 amount9.addEventListener('blur', () => {
@@ -653,6 +824,7 @@ amount9.addEventListener('blur', () => {
         account9.value = '';
         desc9.value = '';
     }
+    amount9.setAttribute("readonly","readonly");
 });
 
 amount10.addEventListener('blur', () => {
@@ -679,6 +851,7 @@ amount10.addEventListener('blur', () => {
         account10.value = '';
         desc10.value = '';
     }
+    amount10.setAttribute("readonly","readonly");
 }); 
 
 const validateButton = document.getElementById('validate');
@@ -698,8 +871,13 @@ function validatePostings() {
         curBalance = curCredits - curDebits;
     }
     if(curBalance === 0) {
-        alert('This posting balances');
-        saveButton.disabled = false;
+        var answer = confirm("This posting balances" + "\n" + "Are you ready to post this entry?");
+        if(answer === true) {
+            saveButton.disabled = false;
+            saveButton.style.color = "Red";
+            saveButton.style.fontWeight = "bold";
+        }
+        
     } else {
         alert('This posting does not balance. The is a difference of ' + curBalance + '. Please correct and try again');
         saveButton.disabled = true;

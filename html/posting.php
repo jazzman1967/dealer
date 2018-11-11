@@ -43,7 +43,7 @@ td,th {
 <div class="content">
 <h1>General Ledger Posting</h1>
 <!--Posting Form-->
-<form action="posting.php" method="post">
+<form action="writegl.php" method="post">
     <fieldset>
         <legend>General Ledger Posting</legend>
         <p><label for="date">Transaction Date: </label><input type="date" name="date" id="date" value="<?php echo date("Y-m-d");?>"></p>
@@ -61,7 +61,7 @@ td,th {
             <tr><td>1</td>
                 <td><input type="text" name="account1" id="account1" value=""></td>
                 <td><input type="text" name="desc1" id="desc1" value="" readonly></td>
-                <td><input type="text" name="control1" id="control1" value=""></td>
+                <td><input type="text" name="control1" id="control1" value="" disabled></td>
                 <td>
                     <select name="type1" id="type1">
                         <option value="none">--Select--</option>
@@ -82,7 +82,7 @@ td,th {
             <tr><td>2</td>
                 <td><input type="text" name="account2" id="account2" value=""></td>
                 <td><input type="text" name="desc2" id="desc2" value="" readonly></td>
-                <td><input type="text" name="control2" id="control2" value=""></td>
+                <td><input type="text" name="control2" id="control2" value="" disabled></td>
                 <td>
                     <select name="type2" id="type2">
                         <option value="none">--Select--</option>
@@ -93,7 +93,7 @@ td,th {
                     </select>
                 </td>
                 <td>
-                    <select name="dc21" id="dc2">
+                    <select name="dc2" id="dc2">
                         <option value="D">Debit</option>
                         <option value="C">Credit</option>
                     </select>
@@ -103,7 +103,7 @@ td,th {
             <tr><td>3</td>
                 <td><input type="text" name="account3" id="account3" value=""></td>
                 <td><input type="text" name="desc3" id="desc3" value="" readonly></td>
-                <td><input type="text" name="control3" id="control3" value=""></td>
+                <td><input type="text" name="control3" id="control3" value="" disabled></td>
                 <td>
                     <select name="type3" id="type3">
                         <option value="none">--Select--</option>
@@ -124,7 +124,7 @@ td,th {
             <tr><td>4</td>
                 <td><input type="text" name="account4" id="account4" value=""></td>
                 <td><input type="text" name="desc4" id="desc4" value="" readonly></td>
-                <td><input type="text" name="control4" id="control4" value=""></td>
+                <td><input type="text" name="control4" id="control4" value="" disabled></td>
                 <td>
                     <select name="type4" id="type4">
                         <option value="none">--Select--</option>
@@ -145,7 +145,7 @@ td,th {
             <tr><td>5</td>
                 <td><input type="text" name="account5" id="account5" value=""></td>
                 <td><input type="text" name="desc5" id="desc5" value="" readonly></td>
-                <td><input type="text" name="control5" id="control5" value=""></td>
+                <td><input type="text" name="control5" id="control5" value="" disabled></td>
                 <td>
                     <select name="type5" id="type5">
                         <option value="none">--Select--</option>
@@ -166,7 +166,7 @@ td,th {
             <tr><td>6</td>
                 <td><input type="text" name="account6" id="account6" value=""></td>
                 <td><input type="text" name="desc6" id="desc6" value="" readonly></td>
-                <td><input type="text" name="control6" id="control6" value=""></td>
+                <td><input type="text" name="control6" id="control6" value="" disabled></td>
                 <td>
                     <select name="type6" id="type6">
                         <option value="none">--Select--</option>
@@ -187,7 +187,7 @@ td,th {
             <tr><td>7</td>
                 <td><input type="text" name="account7" id="account7" value=""></td>
                 <td><input type="text" name="desc7" id="desc7" value="" readonly></td>
-                <td><input type="text" name="control7" id="control7" value=""></td>
+                <td><input type="text" name="control7" id="control7" value="" disabled></td>
                 <td>
                     <select name="type7" id="type7">
                         <option value="none">--Select--</option>
@@ -208,7 +208,7 @@ td,th {
             <tr><td>8</td>
                 <td><input type="text" name="account8" id="account8" value=""></td>
                 <td><input type="text" name="desc8" id="desc8" value="" readonly></td>
-                <td><input type="text" name="control8" id="control8" value=""></td>
+                <td><input type="text" name="control8" id="control8" value="" disabled></td>
                 <td>
                     <select name="type8" id="type8">
                         <option value="none">--Select--</option>
@@ -229,7 +229,7 @@ td,th {
             <tr><td>9</td>
                 <td><input type="text" name="account9" id="account9" value=""></td>
                 <td><input type="text" name="desc9" id="desc9" value="" readonly></td>
-                <td><input type="text" name="control9" id="control9" value=""></td>
+                <td><input type="text" name="control9" id="control9" value="" disabled></td>
                 <td>
                     <select name="type9" id="type9">
                         <option value="none">--Select--</option>
@@ -250,7 +250,7 @@ td,th {
             <tr><td>10</td>
                 <td><input type="text" name="account10" id="account10" value=""></td>
                 <td><input type="text" name="desc10" id="desc10" value="" readonly></td>
-                <td><input type="text" name="control10" id="control10" value=""></td>
+                <td><input type="text" name="control10" id="control10" value="" disabled></td>
                 <td>
                     <select name="type10" id="type10">
                         <option value="none">--Select--</option>
